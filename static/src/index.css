@@ -1,0 +1,13 @@
+@import url('./foundation.css');
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background-color: rgba(219, 219, 219, 1);
+}
+
+/*overwriting of foundation styles below*/
+a {
+  color: #eee;
+}

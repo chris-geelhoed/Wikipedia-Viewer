@@ -1,0 +1,32 @@
+.input-group-btn:last-child>.btn, .input-group-btn:last-child>.btn-group {
+    height: 2.4375rem;
+    width: 3.95rem; /* this subscribes to the golden ratio ~1.66 */
+    background-color: #e6e6e6;
+    transition: background-color 200ms ease-in-out;
+}
+
+.input-group-btn:last-child>.btn:hover {
+    background-color: #dbdbdb;
+}
+
+.input-group.input-group-btn:last-child>.btn:focus {
+    border: none;
+}
+
+.jumbotron {
+    margin-bottom: 0;
+    background-color: #4267b2;
+    box-shadow: 0 3px 4px 0 rgba(0,0,0,.7);
+}
+
+.jumbotron img {
+    height: 2.4375rem;
+}
+
+.col-xs-2 {
+    padding-right: 0;
+}
+
+.col-xs-10 {
+    padding-left: 0;
+}

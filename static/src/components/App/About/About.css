@@ -1,0 +1,15 @@
+.background {
+    background: white;
+    margin: 20px;
+    box-shadow: 0 3px 4px 0 rgba(0,0,0,.7);
+}
+
+.page-header {
+    text-align: left;
+    color:#4267b2;
+    padding-bottom: 0;
+}
+
+.background p {
+    text-align: left;
+}

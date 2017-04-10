@@ -1,0 +1,40 @@
+.row a img {
+    display: inline-block;
+    max-height: 200px;
+}
+
+h1 small{
+    color: #4267b2;
+}
+
+.page-header{
+    border-bottom: 0;
+    text-align: left;
+}
+
+.carousel {
+    /*background: black;*/
+}
+
+.slideshowItem {
+    background: white;
+    margin: 20px;
+    box-shadow: 0 3px 4px 0 rgba(0,0,0,.7);
+}
+
+.imgWrapper {
+    height: 200px;
+}
+
+.carousel-control {
+    width: 5%;
+}
+
+.likeGroup {
+    display: inline-block;
+    color: rgb(66, 103, 178);
+}
+
+.glyphicon-thumbs-up{
+    cursor: pointer;
+}

@@ -1,0 +1,18 @@
+
+.loadingBarBackground {
+    background: white;
+    margin: 20px;
+    box-shadow: 0 3px 4px 0 rgba(0,0,0,.7);
+    padding: 20px;
+}
+
+div.progress {
+    height: 30px;
+    margin-bottom: 0;
+}
+
+@media screen and (max-width: 480px) {
+    div.progress {
+        height: 20px;
+    }
+}
