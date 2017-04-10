@@ -24,6 +24,10 @@ h1 small{
 
 .imgWrapper {
     height: 200px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
 .carousel-control {
