@@ -9,6 +9,7 @@ var bodyParser = require('body-parser');
 var fetchNearYou = require('./routes/fetchNearYou');
 var fetchPopular = require('./routes/fetchPopular');
 var fetchWorldwide = require('./routes/fetchWorldwide');
+var fetchMostLiked = require('./routes/fetchMostLiked');
 var search = require('./routes/search');
 var like = require('./routes/like');
 
@@ -49,6 +50,7 @@ app.use('/search', search);
 app.use('/fetchNearYou', fetchNearYou);
 app.use('/fetchPopular', fetchPopular);
 app.use('/fetchWorldwide', fetchWorldwide);
+app.use('/fetchMostLiked', fetchMostLiked);
 app.use('/like', like);
 
 // catch 404 and forward to error handler

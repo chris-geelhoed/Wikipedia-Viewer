@@ -21,7 +21,7 @@ class Slideshow extends Component {
                         <Carousel interval={false} indicators={false} controls={this.props.wikiData.length > 4 ? true : false} >
                             {
                                 _.chunk(_.uniqBy(this.props.wikiData
-                                    .sort((a, b) => b.pageviews - a.pageviews), page => page.title), 4)
+                                    .sort((a, b) => b[this.props.sortBy] - a[this.props.sortBy]), page => page.title), 4)
                                     .map((chunk, chunkIndex) => {
                                         return (
                                             <Carousel.Item key={chunkIndex}>

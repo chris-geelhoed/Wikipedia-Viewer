@@ -72,6 +72,7 @@ const initialDataState = {
         }
         */
     ],
+    mostLiked: [],
     progress: 0,
     loading: false,
 }
@@ -95,7 +96,7 @@ const dataReducer = (state = initialDataState, action) => {
         case "RECEIVED_ONE_STARTUP_DATA":
             state = {
                 ...state,
-                progress: state.progress + 33.3
+                progress: state.progress + 25
             }
             break;
         case "RECEIVED_ALL_STARTUP_DATA":
@@ -105,6 +106,7 @@ const dataReducer = (state = initialDataState, action) => {
                 nearYou: action.payload.data.nearYou,
                 worldwide: action.payload.data.worldwide,
                 popular: action.payload.data.popular,
+                mostLiked: action.payload.data.mostLiked,
                 loading: false
             }
             break;

@@ -17,7 +17,7 @@ class Dropdown extends Component {
                     <span className="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
                 } id="basic-nav-dropdown">
                     {
-                        ["Near You", "Worldwide", "Popular", "About"].map((title, index) => {
+                        ["Near You", "Worldwide", "Popular Searches", "Most Liked","About"].map((title, index) => {
                             return <DropdownItem title={title} index={index} key={index} />;
                         })
                     }

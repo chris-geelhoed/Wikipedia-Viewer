@@ -12,20 +12,21 @@ export default function () {
     console.log("app has started!");
     return function (dispatch) {
         dispatch(loadingStartupData());
-        const requests = ["fetchNearYou", "fetchWorldwide", "fetchPopular"].map(endpoint => {
+        const requests = ["fetchNearYou", "fetchWorldwide", "fetchPopular", "fetchMostLiked"].map(endpoint => {
             return axios.get(`${url}/${endpoint}`);
         });
         requests.forEach(req => {
             req.then(_ => dispatch(receivedOneStartupData()));
         });
-        axios.all(requests).then(axios.spread((nearYou, worldwide, popular) => {
+        axios.all(requests).then(axios.spread((nearYou, worldwide, popular, mostLiked) => {
             //small delay added to allow the user to see the progress bar complete
             const delay = 300;
             setTimeout(function () {
                 dispatch(receivedAllStartupData({
                     nearYou: nearYou.data,
                     worldwide: worldwide.data,
-                    popular: popular.data
+                    popular: popular.data,
+                    mostLiked: mostLiked.data
                 }));
             }, delay);
         })).catch(error => {

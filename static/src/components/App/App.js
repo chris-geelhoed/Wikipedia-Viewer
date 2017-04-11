@@ -22,9 +22,10 @@ class App extends Component {
         title={`${this.props.data && this.props.data.userSearch? this.props.data.userSearch.length : 0 } results for: "${this.props.lastQuery}"`}
         lastQuery={this.props.lastQuery}
         wikiData={this.props.data.userSearch}/>
-        <Slideshow title="Trending Near You" wikiData={this.props.data.nearYou}/>
-        <Slideshow title="Trending Worldwide" wikiData={this.props.data.worldwide}/>
-        <Slideshow title="Popular" wikiData={this.props.data.popular}/>
+        <Slideshow title="Trending Near You" sortBy="pageviews" wikiData={this.props.data.nearYou}/>
+        <Slideshow title="Trending Worldwide" sortBy="pageviews" wikiData={this.props.data.worldwide}/>
+        <Slideshow title="Popular Searches" sortBy="pageviews" wikiData={this.props.data.popular}/>
+        <Slideshow title="Most Liked" sortBy="likes" wikiData={this.props.data.mostLiked}/>
         <About />
       </div>
     );
