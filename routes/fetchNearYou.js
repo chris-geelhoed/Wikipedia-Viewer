@@ -11,7 +11,7 @@ var fetchLikes = require('../utils/fetchLikes.js');
 router.get('/', function (req, res, next) {
     //get ip => geolocation => yahoo woeid (needed for twitter trends) => twitter trends => wikipedia articles
     //if ip lookup fails then default to Vancouver sample ip
-    var ip = /[\d]+.{1}[\d]+.{1}[\d]+.{1}[\d]+/.exec(req.clientIp) || "96.53.57.70";
+    var ip = /[\d]+.{1}[\d]+.{1}[\d]+.{1}[\d]+/.exec(req.clientIp)[0] || "96.53.57.70";
     new Promise(function (_resolve, _reject) {
         geoip.lookup(ip, function (geo) {
             _resolve(geo);

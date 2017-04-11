@@ -4,5 +4,3 @@ npm-debug.log
 .DS_Store
 /*.env
 /old
-mongopath.js
-twitterclient.js
