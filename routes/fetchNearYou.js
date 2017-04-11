@@ -6,6 +6,7 @@ var fetchWOEID = require('../utils/fetchWOEID.js');
 var fetchStartup = require('../utils/fetchStartup.js');
 var fetchPopular = require('../utils/fetchPopular.js');
 var fetchLikes = require('../utils/fetchLikes.js');
+var sortBy = require('../utils/sortBy.js');
 
 
 router.get('/', function (req, res, next) {
@@ -28,7 +29,7 @@ router.get('/', function (req, res, next) {
         console.log("got topdata at startup");
         return fetchLikes(topData);
     }).then(function(topDataWithLikes) {
-        res.send(topDataWithLikes);
+        res.send(sortBy(topDataWithLikes, "pageviews"));
     })
 });
 

@@ -20,8 +20,7 @@ class Slideshow extends Component {
                         <SlideshowHeader title={this.props.title} />
                         <Carousel interval={false} indicators={false} controls={this.props.wikiData.length > 4 ? true : false} >
                             {
-                                _.chunk(_.uniqBy(this.props.wikiData
-                                    .sort((a, b) => b[this.props.sortBy] - a[this.props.sortBy]), page => page.title), 4)
+                                _.chunk(_.uniqBy(this.props.wikiData, page => page.title), 4)
                                     .map((chunk, chunkIndex) => {
                                         return (
                                             <Carousel.Item key={chunkIndex}>
@@ -38,10 +37,7 @@ class Slideshow extends Component {
                                                                     <h5>
                                                                         <b><span>{page.title}</span>{" "}</b>
                                                                         <SlideshowLikeGroup
-                                                                        clicked={false}
-                                                                        likes={page.likes ? page.likes : 0}
-                                                                        slideshowTitle={this.props.title}
-                                                                        pageTitle={page.title} />
+                                                                        page = {page} />
                                                                     </h5>
                                                                     <h6>Recent Views: {page.pageviews}</h6>
                                                                     <p><i>{page.extract}</i></p>

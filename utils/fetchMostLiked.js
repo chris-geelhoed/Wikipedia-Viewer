@@ -4,15 +4,19 @@ var fetchWiki = require('./fetchWiki.js');
 
 module.exports = function () {
     return new Promise(function (resolve, reject) {
-        Like.find().exec(function (error, document) {
+        Like.find({
+            accepted: true
+        }).exec(function (error, document) {
             if (error) {
                 throw error;
             }
             var likes = document.reduce(function (acc, doc) {
-                if (acc[doc.title]) {
-                    acc[doc.title] += 1;
-                } else {
-                    acc[doc.title] = 1;
+                if (doc.title) {
+                    if (acc[doc.title]) {
+                        acc[doc.title] += 1;
+                    } else {
+                        acc[doc.title] = 1;
+                    }
                 }
                 return acc;
             }, {});
@@ -23,8 +27,6 @@ module.exports = function () {
                     })[0];
                     result["likes"] = likes[result.title];
                     return result;
-                }).sort(function (a, b) {
-                    return b.likes - a.likes;
                 }).slice(0, 10);
                 resolve(mostLiked);
             })

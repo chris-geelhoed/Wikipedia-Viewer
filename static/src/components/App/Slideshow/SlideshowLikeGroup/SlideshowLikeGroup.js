@@ -5,7 +5,9 @@ import clickedLike from '../../../../actionCreators/clickedLike/clickedLike.js';
 
 class SlideshowLikeGroup extends Component {
     handleClick() {
-        this.props.clickedLike(Object.assign({}, this.props, {
+        this.props.clickedLike(Object.assign({}, {
+            page: this.props.page
+        }, {
             wikiData: this.props.wikiData
         }));
     }
@@ -13,7 +15,7 @@ class SlideshowLikeGroup extends Component {
         return (
             <span className="likeGroup">
                 <span onClick={this.handleClick.bind(this)} className="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
-                {" "}{this.props.likes}
+                {" "}{this.props.page.likes ? this.props.page.likes : 0}
             </span>
         );
     }

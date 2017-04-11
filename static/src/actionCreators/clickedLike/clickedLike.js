@@ -7,12 +7,16 @@ import {
 } from '../receivedLikeData/receivedLikeData.js';
 import url from '../API_URL.js';
 
-export default function ({ slideshowTitle, pageTitle, wikiData }) {
+export default function ({page, wikiData}) {
     return function (dispatch) {
+        console.log("data", page, wikiData);
+        const pageTitle = page.title;
         dispatch(loadingLikeData());
         axios.get(`${url}/like`, {
             params: {
-                title: pageTitle
+                title: pageTitle,
+                likes: page.likes,
+                page: page,
             }
         }).then(function (response) {
             const data = _.mapValues(wikiData, val => {
