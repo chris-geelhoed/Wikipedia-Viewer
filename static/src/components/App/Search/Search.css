@@ -5,6 +5,31 @@
     transition: background-color 200ms ease-in-out;
 }
 
+@media screen and (max-width: 1000px) {
+    .input-group-btn:last-child>.btn {
+        padding-right: 0;
+        padding-left: 0;
+    }
+    .myDropdown {
+        padding: 0;
+    }
+    .myLogo {
+        display: none;
+    }
+    .mySearch {
+        padding-right: 0;
+    }
+    ul.nav {
+        margin: 0;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .input-group-btn:last-child>.btn {
+        width: 2.4375rem;
+    }
+}
+
 .input-group-btn:last-child>.btn:hover {
     background-color: #dbdbdb;
 }
@@ -13,20 +38,26 @@
     border: none;
 }
 
+form .input-group {
+    margin-bottom: 0;
+}
+
 .jumbotron {
+    padding: 15px;
     margin-bottom: 0;
     background-color: #4267b2;
     box-shadow: 0 3px 4px 0 rgba(0,0,0,.7);
 }
 
 .jumbotron img {
-    height: 2.4375rem;
+    /*height: 2.4375rem;*/
+    height: 3rem;
 }
 
-.col-xs-2 {
+.myDropdown {
     padding-right: 0;
 }
 
-.col-xs-10 {
+.myLogo {
     padding-left: 0;
 }

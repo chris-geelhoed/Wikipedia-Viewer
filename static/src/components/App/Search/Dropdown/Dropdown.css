@@ -1,0 +1,28 @@
+span.caret{
+    display: none;
+}
+
+.glyphicon-menu-hamburger {
+    font-size: 1.5em;
+}
+
+.nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.nav>li>a {
+    color: black;
+    padding-right: 0;
+    padding-left: 0;
+    padding-bottom: 0;
+}
+
+.nav>li>a:focus, .nav>li>a:hover {
+    color: #333;
+}
+
+.nav>li>a:focus, .nav>li>a:hover {
+    text-decoration: none;
+    background-color: transparent;
+}

@@ -9,10 +9,12 @@ import './index.css';
 
 import dataReducer from './reducers/dataReducer/dataReducer.js';
 import searchReducer from './reducers/searchReducer/searchReducer.js';
+import dropdownReducer from './reducers/dropdownReducer/dropdownReducer.js';
 
 const reducer = combineReducers({
   data: dataReducer,
   search: searchReducer,
+  dropdown: dropdownReducer
 });
 
 const store = createStore(
