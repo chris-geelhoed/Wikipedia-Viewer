@@ -10,7 +10,10 @@ import wikiLogo from './logo.png';
 class Search extends Component {
     handleSubmit(e) {
         e.preventDefault();
-        this.props.submittedSearch(this.props.query);
+        /*Do not accept empty string as query */
+        if (this.props.query) {
+            this.props.submittedSearch(this.props.query);
+        }
     }
     handleChange(e) {
         this.props.changedSearch(e.target.value);

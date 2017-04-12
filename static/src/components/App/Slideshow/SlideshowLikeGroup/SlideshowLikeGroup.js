@@ -5,11 +5,14 @@ import clickedLike from '../../../../actionCreators/clickedLike/clickedLike.js';
 
 class SlideshowLikeGroup extends Component {
     handleClick() {
-        this.props.clickedLike(Object.assign({}, {
-            page: this.props.page
-        }, {
-            wikiData: this.props.wikiData
-        }));
+        /* Only want to trigger the action once the previous like request has been processed */
+        if (!this.props.loadingLikeData) {
+            this.props.clickedLike(Object.assign({}, {
+                page: this.props.page
+            }, {
+                    wikiData: this.props.wikiData
+                }));
+        }
     }
     render() {
         return (
@@ -22,15 +25,16 @@ class SlideshowLikeGroup extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return {
-    wikiData: state.data
-  }
+    return {
+        wikiData: state.data,
+        loadingLikeData: state.data.loadingLikeData,
+    }
 }
 
 const matchDispatchToProps = (dispatch) => {
-  return bindActionCreators({
-      clickedLike: clickedLike
-  }, dispatch);
+    return bindActionCreators({
+        clickedLike: clickedLike
+    }, dispatch);
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(SlideshowLikeGroup);

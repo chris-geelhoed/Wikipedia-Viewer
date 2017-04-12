@@ -75,6 +75,7 @@ const initialDataState = {
     mostLiked: [],
     progress: 0,
     loading: false,
+    loadingLikeData: false,
 }
 
 const dataReducer = (state = initialDataState, action) => {
@@ -137,14 +138,24 @@ const dataReducer = (state = initialDataState, action) => {
             break;
         case "LOADING_LIKE_DATA":
             console.log("loading like data");
+            state = {
+                ...state,
+                loadingLikeData: true,
+            }
             break;
         case "LIKE_DATA_ERROR":
             console.log(action);
+            state = {
+                ...state,
+                loadingLikeData: false,
+            }
             break;
         case "RECEIVED_LIKE_DATA":
             console.log("action", action);
             console.log("initial state", state);
-            state = Object.assign({}, state, action.payload.data);
+            state = Object.assign({}, state, action.payload.data, {
+                loadingLikeData: false,
+            });
             break;
         default:
             break;
