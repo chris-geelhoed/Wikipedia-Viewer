@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
         return fetchLikes(data);
     }).then(function(dataWithLikes) {
         res.send(sortBy(dataWithLikes, "pageviews"));
-    })
+    });
 });
 
 module.exports = router;

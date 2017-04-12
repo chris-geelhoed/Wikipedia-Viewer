@@ -20,6 +20,7 @@
     "mongodb": "^2.2.25",
     "mongoose": "^4.9.1",
     "morgan": "~1.7.0",
+    "object-assign": "^4.1.1",
     "object.values": "^1.0.4",
     "promise": "^7.1.1",
     "request-ip": "^2.0.1",

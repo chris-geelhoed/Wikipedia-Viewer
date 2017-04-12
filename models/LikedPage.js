@@ -1,9 +1,14 @@
     var mongoose = require('mongoose');
     
     var likedPageSchema = mongoose.Schema({
+        thumbnail: String,
 		title: String,
-        likes: Number,
-        page: String, //this will be a stringified object with title, extract, pageviews, and img
+        likes: {
+            type: Number,
+            default: 0,
+        },
+        pageviews: Number,
+        extract: String,
     });
 
     module.exports = mongoose.model('LikedPage', likedPageSchema);
