@@ -19,7 +19,7 @@ module.exports = function(searchList) {
                     exintro: "1",
                     explaintext: "1",
                     piprop: "thumbnail",
-                    pithumbsize: "1000",
+                    pithumbsize: "200",
                     pilimit: "max",
                     pvipdays: 1,
                     gsrsearch: searchList[i]
