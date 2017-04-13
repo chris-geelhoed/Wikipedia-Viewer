@@ -49,6 +49,10 @@ form .input-group {
     margin-bottom: 0;
     background-color: #4267b2;
     box-shadow: 0 3px 4px 0 rgba(0,0,0,.7);
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1;
 }
 
 .jumbotron img {

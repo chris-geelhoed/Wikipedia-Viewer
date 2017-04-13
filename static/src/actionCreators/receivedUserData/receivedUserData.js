@@ -1,3 +1,5 @@
+import jump from 'jump.js';
+
 export function loadingUserData() {
     return {
         type: "LOADING_USER_DATA",
@@ -14,6 +16,10 @@ export function userDataError(error) {
 }
 
 export function receivedUserData() {
+    /*scroll to the top of the page once the search data is loaded*/
+    jump(".search", {
+        offset: -200
+    });
     return {
         type: "RECEIVED_USER_DATA"
     }

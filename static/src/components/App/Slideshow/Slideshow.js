@@ -9,7 +9,7 @@ import _ from 'lodash';
 class Slideshow extends Component {
     render() {
         return (
-            <div className="row">
+            <div className={`row ${this.props.class}`}>
                 {!this.props.wikiData && !this.props.loading && this.props.lastQuery &&
                     <div className="col-md-12 slideshowItem">
                         <SlideshowHeader title={`No results found for: "${this.props.lastQuery}"`} />

@@ -7,4 +7,4 @@ test('fetchTrends returns a list of trends given valid WOEID', () => {
     expect(typeof(trends)).toBe("object");
     expect(trends.every(trend => typeof(trend) === "string")).toBeTruthy();
   });
-});
+})

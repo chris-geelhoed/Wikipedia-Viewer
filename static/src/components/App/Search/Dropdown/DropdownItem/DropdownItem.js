@@ -8,7 +8,9 @@ import './DropdownItem.css';
 
 class DropdownItem extends Component {
     handleClick() {
-        jump(`.${this.props.title.replace(" ", "")}`);
+        jump(`.${this.props.title.replace(" ", "")}`, {
+            offset: -90 /*this offset makes up for the space of the fixed search bar*/
+        });
         this.props.clickedDropdownItem();
     }
     render() {

@@ -17,16 +17,19 @@ class App extends Component {
     return (
       <div className="App">
         <Search />
-        <LoadingBar />
-        <Slideshow
-        title={`${this.props.data && this.props.data.userSearch? this.props.data.userSearch.length : 0 } results for: "${this.props.lastQuery}"`}
-        lastQuery={this.props.lastQuery}
-        wikiData={this.props.data.userSearch}/>
-        <Slideshow title="Trending Near You" sortBy="pageviews" wikiData={this.props.data.nearYou}/>
-        <Slideshow title="Trending Worldwide" sortBy="pageviews" wikiData={this.props.data.worldwide}/>
-        <Slideshow title="Popular Searches" sortBy="pageviews" wikiData={this.props.data.popular}/>
-        <Slideshow title="Most Liked" sortBy="likes" wikiData={this.props.data.mostLiked}/>
-        <About />
+        <div id="wrapper">
+          <LoadingBar />
+          <Slideshow
+            class="search"
+            title={`${this.props.data && this.props.data.userSearch ? this.props.data.userSearch.length : 0} results for: "${this.props.lastQuery}"`}
+            lastQuery={this.props.lastQuery}
+            wikiData={this.props.data.userSearch} />
+          <Slideshow class="nearYou" title="Trending Near You" wikiData={this.props.data.nearYou} />
+          <Slideshow class="worldwide" title="Trending Worldwide" wikiData={this.props.data.worldwide} />
+          <Slideshow class="popular" title="Popular Searches" wikiData={this.props.data.popular} />
+          <Slideshow class="mostLiked" title="Most Liked" wikiData={this.props.data.mostLiked} />
+          <About />
+        </div>
       </div>
     );
   }
