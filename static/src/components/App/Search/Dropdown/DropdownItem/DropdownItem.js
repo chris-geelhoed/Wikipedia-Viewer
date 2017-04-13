@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { MenuItem } from 'react-bootstrap';
 import jump from 'jump.js';
 import { clickedDropdownItem } from '../../../../../actionCreators/clickedDropdown/clickedDropdown.js';
+import './DropdownItem.css';
 
 class DropdownItem extends Component {
     handleClick() {
@@ -13,7 +14,8 @@ class DropdownItem extends Component {
     render() {
         return (
             <MenuItem onClick={this.handleClick.bind(this)} eventKey={this.props.index}>
-                {this.props.title}
+                <span className={`myGlyph glyphicon glyphicon-${this.props.icon}`} aria-hidden="true"></span>
+                <span className="dropDownItem">{this.props.title}</span>
             </MenuItem>
         );
     }

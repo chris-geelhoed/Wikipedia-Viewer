@@ -5,7 +5,7 @@ import './Search.css';
 import Dropdown from './Dropdown/Dropdown.js';
 import changedSearch from '../../../actionCreators/changedSearch/changedSearch.js';
 import submittedSearch from '../../../actionCreators/submittedSearch/submittedSearch.js';
-import wikiLogo from './logo.png';
+import wikiLogo from './logo_inline.png';
 
 class Search extends Component {
     handleSubmit(e) {
@@ -22,13 +22,13 @@ class Search extends Component {
         return (
             <div className="jumbotron">
                 <div className="row">
-                    <div className="myDropdown col-xs-1 col-md-1">
+                    <div className="myDropdown col-xs-2 col-md-1">
                         <Dropdown />
                     </div>
-                    <div className="myLogo col-xs-1 col-md-1">
+                    <div className="myLogo hidden-xs hidden-sm col-md-2">
                         <img src={wikiLogo} alt="wikipedia W" />
                     </div>
-                    <div className="mySearch col-xs-10 col-md-10">
+                    <div className="mySearch col-xs-10 col-md-9">
                         <form onSubmit={this.handleSubmit.bind(this)} >
                             <div className="input-group">
                                 <input type="text" onChange={this.handleChange.bind(this)} className="form-control" placeholder="Search Wikipedia..." />

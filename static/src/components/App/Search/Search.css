@@ -5,6 +5,7 @@
     transition: background-color 200ms ease-in-out;
 }
 
+/*
 @media screen and (max-width: 1000px) {
     .input-group-btn:last-child>.btn {
         padding-right: 0;
@@ -23,6 +24,7 @@
         margin: 0;
     }
 }
+*/
 
 @media screen and (max-width: 400px) {
     .input-group-btn:last-child>.btn {
@@ -43,19 +45,26 @@ form .input-group {
 }
 
 .jumbotron {
-    padding: 15px;
+    padding: 15px 0 15px 0;
     margin-bottom: 0;
     background-color: #4267b2;
     box-shadow: 0 3px 4px 0 rgba(0,0,0,.7);
 }
 
 .jumbotron img {
-    /*height: 2.4375rem;*/
-    height: 3rem;
+    /*height: 2rem;*/
+    height: 2.4375rem;
+    /*height: 3rem;*/
+}
+
+.jumbotron .row {
+    margin-left: 0;
+    margin-right: 0;
 }
 
 .myDropdown {
-    padding-right: 0;
+    padding-right: 5px;
+    padding-left: 0;
 }
 
 .myLogo {

@@ -26,3 +26,19 @@ span.caret{
     text-decoration: none;
     background-color: transparent;
 }
+
+ul.dropdown-menu {
+    min-width: 200px;
+    margin-top: 15px;
+    margin-left: -1.25rem;
+    border-radius: 0;
+}
+
+ul.dropdown-menu li {
+    font-size: 1em;
+    padding: 5px;
+}
+
+.dropDownItem {
+    margin-left: 15px;
+}
