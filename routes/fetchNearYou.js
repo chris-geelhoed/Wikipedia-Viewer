@@ -6,6 +6,7 @@ var fetchWOEID = require('../utils/fetchWOEID.js');
 var fetchStartup = require('../utils/fetchStartup.js');
 var fetchPopular = require('../utils/fetchPopular.js');
 var fetchLikes = require('../utils/fetchLikes.js');
+var recordLogin = require('../utils/recordLogin.js');
 var sortBy = require('../utils/sortBy.js');
 
 
@@ -19,6 +20,7 @@ router.get('/', function (req, res, next) {
             _resolve(geo);
         });
     }).then(function (geo) {
+        recordLogin(ip, geo);
         return fetchWOEID({
             lat: geo.ll[0],
             long: geo.ll[1]
