@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var compression = require('compression')
 
 //var index = require('./routes/index');
 var fetchNearYou = require('./routes/fetchNearYou');
@@ -38,6 +39,9 @@ var allowCrossDomain = function(req, res, next) {
     next();
 }
 app.use(allowCrossDomain);
+
+//compress images
+app.use(compression());
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
