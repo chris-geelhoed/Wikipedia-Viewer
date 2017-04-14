@@ -1,1 +1,0 @@
-module.exports = 'mongodb://admin:87fish77BonE99@ds143030.mlab.com:43030/wikidata';
