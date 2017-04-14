@@ -10,7 +10,8 @@ module.exports = function (wikiData) {
         Promise.all(wikiData.map(function (page) {
             return new Promise(function (resolve, reject) {
                 Like.find({
-                    title: page.title
+                    title: page.title,
+                    accept: true,
                 }).exec().then(function(data) {
                     resolve(Object.assign({}, page, {likes: data.length}));
                 });

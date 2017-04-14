@@ -32,6 +32,7 @@ app.use(requestIp.mw());
 
 
 //allow cross orgins for development
+
 var allowCrossDomain = function(req, res, next) {
     res.header('Access-Control-Allow-Origin', "*");
     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
@@ -40,6 +41,7 @@ var allowCrossDomain = function(req, res, next) {
 }
 app.use(allowCrossDomain);
 
+
 //compress images
 app.use(compression());
 
@@ -47,7 +49,9 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static('./static/build'));
+app.use(express.static('./static/build', {
+  maxAge: 1000 * 60 * 60 /*set to 1 hour cache */
+}));
 
 //app.use('/', index);
 app.use('/search', search);

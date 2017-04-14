@@ -12,6 +12,11 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.props.appStarted(); //trigger that app has started and send request for startup data to server
+    window.addEventListener("keydown", evt => {
+      if([38, 40].includes(evt.keyCode)) {
+        evt.preventDefault();
+      }
+    }); //disable keyboard scrolling, prevent potential bugs
   }
   render() {
     return (
