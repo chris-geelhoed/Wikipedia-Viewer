@@ -11,7 +11,7 @@ module.exports = function (wikiData) {
             return new Promise(function (resolve, reject) {
                 Like.find({
                     title: page.title,
-                    accept: true,
+                    accepted: true,
                 }).exec().then(function(data) {
                     resolve(Object.assign({}, page, {likes: data.length}));
                 });

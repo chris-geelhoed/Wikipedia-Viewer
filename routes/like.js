@@ -9,8 +9,8 @@ var LikedPage = require('../models/LikedPage.js');
 router.get('/', function (req, res, next) {
     var page = JSON.parse(req.query.page);
     var title = page.title;
-    //var ip = req.clientIp; //ip set to random string for testing
-    var ip = String(Math.random());
+    var ip = req.clientIp; //ip set to random string for testing
+    //var ip = String(Math.random());
     Like.find({
         title: title,
         ip: ip
@@ -27,7 +27,6 @@ router.get('/', function (req, res, next) {
                     res.send({
                         message: "user has already liked that article"
                     });
-                    throw new Error();
                 }
                 else {
                     resolve();
