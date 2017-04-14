@@ -6,7 +6,7 @@ The purpose of this webpage is to help people learn more about the issues being 
 
 ## Technical Details
 
-In addition to providing a Wikipedia search engine, this webpage generates 3 carousels dynamically as follows:
+In addition to providing a Wikipedia search engine, this webpage generates 4 carousels dynamically as follows:
 
 ### Trending near you:
 
@@ -25,8 +25,14 @@ The same as above but getting IP and geolocation is not necessary as the world W
 
 Generated based on top 10 most searched items and sorted by pageviews.
 
+### Most Liked
+
+Every user had the ability to upvote an given page once. The most liked carousel displays these pages in descending order. 
+
 ### Performance
 
-This page takes full advantage of Node.js' asynchronous nature by allowing many tasks (potentially 100 at a time) to run in parallel. Furthermore,
-care is taken to cache data whenever possible. To avoid 'callback hell', promises are used heavily and code is broken in several reusable functions.
-Most of the business logic of this application can be found in the 'utils' folder of this repository.
+This page takes full advantage of Node.js' asynchronous nature by allowing many API calls (potentially 100 at a time) to run in parallel. Furthermore,
+care is taken to cache data whenever possible and images are compressed by middleware. To avoid 'callback hell', promises are used heavily and code is broken in several reusable functions.
+
+### Tests
+Several automated tests have been written in Jest to test the asynchronous output of the various Express modules. These can be found in the 'tests' folder.
