@@ -53,6 +53,8 @@ form .input-group {
     position: fixed;
     top: 0;
     z-index: 1;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 }
 
 .jumbotron img {
