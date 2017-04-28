@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import './App.css';
 import Search from './Search/Search.js';
 import Slideshow from './Slideshow/Slideshow.js';
+import NearYouMap from './NearYouMap/NearYouMap.js';
 import About from './About/About.js';
 import LoadingBar from './LoadingBar/LoadingBar.js';
 import appStarted from '../../actionCreators/appStarted/appStarted.js';
@@ -12,11 +13,6 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.props.appStarted(); //trigger that app has started and send request for startup data to server
-    window.addEventListener("keydown", evt => {
-      if([38, 40].includes(evt.keyCode)) {
-        evt.preventDefault();
-      }
-    }); //disable keyboard scrolling, prevent potential bugs
   }
   render() {
     return (
@@ -29,7 +25,12 @@ class App extends Component {
             title={`${this.props.data && this.props.data.userSearch ? this.props.data.userSearch.length : 0} results for: "${this.props.lastQuery}"`}
             lastQuery={this.props.lastQuery}
             wikiData={this.props.data.userSearch} />
-          <Slideshow class="nearYou" title="Trending Near You" wikiData={this.props.data.nearYou} />
+          <Slideshow 
+          class="nearYou"
+          title="Trending Near You"
+          wikiData={this.props.data.nearYou}
+          map={<NearYouMap />}
+          />
           <Slideshow class="worldwide" title="Trending Worldwide" wikiData={this.props.data.worldwide} />
           <Slideshow class="popular" title="Popular Searches" wikiData={this.props.data.popular} />
           <Slideshow class="mostLiked" title="Most Liked" wikiData={this.props.data.mostLiked} />

@@ -18,6 +18,7 @@ class Slideshow extends Component {
                 {this.props.wikiData && this.props.wikiData.length > 0 &&
                     <div className="col-md-12 slideshowItem">
                         <SlideshowHeader title={this.props.title} />
+                        {this.props.map}
                         <Carousel interval={false} indicators={false} controls={this.props.wikiData.length > 4 ? true : false} >
                             {
                                 _.chunk(_.uniqBy(this.props.wikiData, page => page.title), 4)

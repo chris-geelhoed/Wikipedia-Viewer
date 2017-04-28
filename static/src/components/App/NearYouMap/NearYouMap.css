@@ -1,0 +1,6 @@
+.nearYouMap {
+    width: 100% !important;
+    height: 60vh !important;
+    min-height: 200px;
+    margin-bottom: 40px;
+}
