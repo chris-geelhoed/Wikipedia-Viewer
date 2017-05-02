@@ -15,10 +15,27 @@ const params = {
 }
 
 class NearYouMap extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      lat: coords.lat,
+      lng: coords.lng,
+    }
+  }
+  onMapCreated(map) {
+    map.setOptions({
+      disableDefaultUI: false,
+      draggableCursor: "default",
+    });
+  }
   handleClick(e) {
     const latitude = e.latLng.lat();
     const longitude = e.latLng.lng();
-    console.log(`Click at latitude = ${latitude} and longitude = ${longitude}`)
+    console.log(`Click at latitude = ${latitude} and longitude = ${longitude}`);
+    this.setState({
+      lat: latitude,
+      lng: longitude,
+    });
   }
   render() {
     return (
@@ -30,12 +47,12 @@ class NearYouMap extends Component {
             zoom={12}
             loadingMessage={'Be happy'}
             params={params}
-            onMapCreated={console.log("loaded!")}
+            onMapCreated={this.onMapCreated}
             onClick={this.handleClick.bind(this)}
           >
             <Marker
-              lat={coords.lat}
-              lng={coords.lng}
+              lat={this.state.lat}
+              lng={this.state.lng}
               draggable={true}
               onDragEnd={this.onDragEnd} />
           </Gmaps>

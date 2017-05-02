@@ -3,4 +3,5 @@
     height: 60vh !important;
     min-height: 200px;
     margin-bottom: 40px;
+    cursor: pointer !important;
 }

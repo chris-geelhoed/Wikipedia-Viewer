@@ -1,4 +1,8 @@
 const initialDataState = {
+    location: {
+        city: "",
+        country: "",
+    },
     userSearch: [],
     nearYou: [
         /*
@@ -76,6 +80,7 @@ const initialDataState = {
     progress: 0,
     loading: false,
     loadingLikeData: false,
+    loadingLocation: false,
 }
 
 const dataReducer = (state = initialDataState, action) => {
