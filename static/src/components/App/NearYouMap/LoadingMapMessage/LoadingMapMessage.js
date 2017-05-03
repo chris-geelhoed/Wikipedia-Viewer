@@ -9,6 +9,7 @@ class LoadingMapMessage extends Component {
     }
   }
   tick() {
+    const delay = 500;
     return setInterval(() => {
       this.setState((prevState) => {
         return {
@@ -16,7 +17,7 @@ class LoadingMapMessage extends Component {
             "." : prevState.message += "."
         }
       });
-    }, 500);
+    }, delay);
   }
   componentWillMount() {
     this.setState({
