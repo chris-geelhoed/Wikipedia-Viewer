@@ -11,8 +11,6 @@ const params = {
   key: 'AIzaSyDJCdjeV5EymdowQdz-C2e-FCKzfu0okpI'
 }
 
-const geocoder = null;
-
 class NearYouMap extends Component {
   constructor(props) {
     super(props);
@@ -26,18 +24,10 @@ class NearYouMap extends Component {
       disableDefaultUI: false,
       draggableCursor: "default",
     });
-    console.log("map", map);
   }
   handleClick(e) {
     const latitude = e.latLng.lat();
     const longitude = e.latLng.lng();
-    console.log("e = ", e);
-    console.log("func", e.Geocoder);
-    /*
-    window.google.maps.Geocoder().geocode(e.latLng, function(results, status) {
-      console.log(results, status);
-    });
-    */
     this.setState({
       lat: latitude,
       lng: longitude,
@@ -54,7 +44,7 @@ class NearYouMap extends Component {
           <Gmaps className="nearYouMap"
             lat={this.props.coords.lat}
             lng={this.props.coords.long}
-            zoom={12}
+            zoom={6}
             loadingMessage={'Be happy'}
             params={params}
             onMapCreated={this.onMapCreated}
@@ -72,19 +62,16 @@ class NearYouMap extends Component {
   }
 }
 
-
 const mapStateToProps = (state) => {
   return {
     coords: state.data.location.coords
   }
 }
 
-
 const matchDispatchToProps = (dispatch) => {
   return bindActionCreators({
     clickedMap: clickedMap
   }, dispatch);
 }
-
 
 export default connect(mapStateToProps, matchDispatchToProps)(NearYouMap);

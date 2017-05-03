@@ -8,6 +8,7 @@ import NearYouMap from './NearYouMap/NearYouMap.js';
 import About from './About/About.js';
 import LoadingBar from './LoadingBar/LoadingBar.js';
 import appStarted from '../../actionCreators/appStarted/appStarted.js';
+import LoadingMapMessage from './NearYouMap/LoadingMapMessage/LoadingMapMessage.js';
 
 class App extends Component {
   constructor(props) {
@@ -27,7 +28,7 @@ class App extends Component {
             wikiData={this.props.data.userSearch} />
           <Slideshow 
           class="nearYou"
-          title={`Trending Near ${this.props.data.location.address}`}
+          title={this.props.data.loadingNewLocation ? <LoadingMapMessage /> : `Trending Near ${this.props.data.location.address}`}
           wikiData={this.props.data.nearYou}
           map={<NearYouMap />}
           />

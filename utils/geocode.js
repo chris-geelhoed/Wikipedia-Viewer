@@ -4,7 +4,7 @@ var geocoder = require("geocoder");
 module.exports = function (lat, long) {
     return new Promise(function (resolve, reject) {
         geocoder.reverseGeocode(lat, long, function (error, data) {
-            //iterate through the results of the reverse geocode until a type of country and level_1 (city/province) is found
+            //iterate through the results of the reverse geocode until a type of country and region is found
             var address = {};
             var types = ["administrative_area_level_1", "country"];
             var shouldBreak = false;
@@ -25,7 +25,14 @@ module.exports = function (lat, long) {
                     }
                 }
             }
-            address = address["administrative_area_level_1"] + ", " + address["country"];
+            var region = address["administrative_area_level_1"];
+            var country = address["country"];
+            if(region && country) {
+                address = address["administrative_area_level_1"] + ", " + address["country"];
+            } else {
+                //If a region and country cannot be found
+                address = "Unknown";
+            }
             resolve(address);
         });
     });

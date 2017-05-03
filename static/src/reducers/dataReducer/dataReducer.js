@@ -4,83 +4,15 @@ const initialDataState = {
         coords: {},
     },
     userSearch: [],
-    nearYou: [
-        /*
-        {
-            title: "cookie1",
-            extract: "this is the first cookie i think it is pretty small",
-            thumbnail: "http://images.media-allrecipes.com/userphotos/560x315/1107530.jpg"
-        },
-        {
-            title: "cookie2",
-            extract: "this is the second cookie i think it is pretty big",
-            thumbnail: "https://www.kfc.com/assets/products/G15022_KFC_83-dozen-cookies-Enviro_1291_RGB-copy-3c79d7ef6ea6f6afbc31347a8419e6229ebbfb347b8396f3d05fff5343c36dbf.jpg"
-        },
-        {
-            title: "cookie3",
-            extract: "this is the third cookie i think it is pretty big",
-            thumbnail: "https://cdn1.pri.org/sites/default/files/story/images/cookies733.jpg"
-        },
-        {
-            title: "drake",
-            extract: "drake is my good homie",
-            thumbnail: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Drake_and_Future_2016_Summer_Sixteen_Tour.jpg/800px-Drake_and_Future_2016_Summer_Sixteen_Tour.jpg"
-        }
-        */
-    ],
-    worldwide: [
-        /*
-        {
-            title: "cookie1",
-            extract: "this is the first cookie i think it is pretty small",
-            thumbnail: "http://images.media-allrecipes.com/userphotos/560x315/1107530.jpg"
-        },
-        {
-            title: "cookie2",
-            extract: "this is the second cookie i think it is pretty big",
-            thumbnail: "https://www.kfc.com/assets/products/G15022_KFC_83-dozen-cookies-Enviro_1291_RGB-copy-3c79d7ef6ea6f6afbc31347a8419e6229ebbfb347b8396f3d05fff5343c36dbf.jpg"
-        },
-        {
-            title: "cookie3",
-            extract: "this is the third cookie i think it is pretty big",
-            thumbnail: "https://cdn1.pri.org/sites/default/files/story/images/cookies733.jpg"
-        },
-        {
-            title: "drake",
-            extract: "drake is my good homie",
-            thumbnail: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Drake_and_Future_2016_Summer_Sixteen_Tour.jpg/800px-Drake_and_Future_2016_Summer_Sixteen_Tour.jpg"
-        }
-        */
-    ],
-    popular: [
-        /*
-        {
-            title: "cookie1",
-            extract: "this is the first cookie i think it is pretty small",
-            thumbnail: "http://images.media-allrecipes.com/userphotos/560x315/1107530.jpg"
-        },
-        {
-            title: "cookie2",
-            extract: "this is the second cookie i think it is pretty big",
-            thumbnail: "https://www.kfc.com/assets/products/G15022_KFC_83-dozen-cookies-Enviro_1291_RGB-copy-3c79d7ef6ea6f6afbc31347a8419e6229ebbfb347b8396f3d05fff5343c36dbf.jpg"
-        },
-        {
-            title: "cookie3",
-            extract: "this is the third cookie i think it is pretty big",
-            thumbnail: "https://cdn1.pri.org/sites/default/files/story/images/cookies733.jpg"
-        },
-        {
-            title: "drake",
-            extract: "drake is my good homie",
-            thumbnail: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Drake_and_Future_2016_Summer_Sixteen_Tour.jpg/800px-Drake_and_Future_2016_Summer_Sixteen_Tour.jpg"
-        }
-        */
-    ],
+    nearYou: [],
+    worldwide: [],
+    popular: [],
     mostLiked: [],
     progress: 0,
     loading: false,
     loadingLikeData: false,
     loadingLocation: false,
+    loadingNewLocation: false,
 }
 
 const dataReducer = (state = initialDataState, action) => {
@@ -143,7 +75,6 @@ const dataReducer = (state = initialDataState, action) => {
             }
             break;
         case "LOADING_LIKE_DATA":
-            console.log("loading like data");
             state = {
                 ...state,
                 loadingLikeData: true,
@@ -158,22 +89,33 @@ const dataReducer = (state = initialDataState, action) => {
             break;
         case "RECEIVED_LIKE_DATA":
             console.log("action", action);
-            console.log("initial state", state);
             state = Object.assign({}, state, action.payload.data, {
                 loadingLikeData: false,
             });
             break;
         case "NEW_LOCATION_DATA_ERROR":
             console.log(action);
+            state = {
+                ...state,
+                loadingNewLocation: false,
+            }
+            break;
+        case "LOADING_NEW_LOCATION_DATA":
+            console.log("loading new location data");
+            state = {
+                ...state,
+                loadingNewLocation: true,
+            }
             break;
         case "RECEIVED_NEW_LOCATION_DATA":
             console.log("new location data", action);
             state = {
                 ...state,
-                nearYou: action.payload.data.nearYou,
                 location: Object.assign({}, state.location, {
                     address: action.payload.data.address
-                })
+                }),
+                nearYou: action.payload.data.nearYou,
+                loadingNewLocation: false,
             }
             break;
         default:

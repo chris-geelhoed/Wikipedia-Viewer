@@ -15,7 +15,6 @@ export default function (coords) {
                 long: coords.long,
             }
         }).then(function (response) {
-            console.log(response.data);
             dispatch(receivedNewLocationData(response.data));
         }).catch(function (error) {
             dispatch(newLocationDataError(error));
