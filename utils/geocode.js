@@ -1,4 +1,4 @@
-var Promise = require('Promise');
+var Promise = require('promise');
 var geocoder = require("geocoder");
 
 module.exports = function (lat, long) {
@@ -14,7 +14,7 @@ module.exports = function (lat, long) {
                     shouldBreak = false;
                     for(var k = 0, kLen = data.results[j].address_components.length; k < kLen; k++) {
                         component = data.results[j].address_components[k];
-                        if(component.types.includes(types[i])) {
+                        if(component.types.indexOf(types[i]) !== -1) {
                             address[types[i]] = component.long_name;
                             shouldBreak = true;
                             break;
