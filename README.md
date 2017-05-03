@@ -17,6 +17,8 @@ get user IP => get user geolocation => get WOEID (Yahoo's area code needed for T
 => select articles based on image availability and pageviews from the previous day
 => return data to frontend and cache to MongoDB
 
+The 'Near You' carousel also features a map which allows the user to change their assumed position by clicking anywhere on the globe. This feature lets you quickly check out what is trending around the world!
+
 ### Trending Worldwide:
 
 The same as above but getting IP and geolocation is not necessary as the world WOEID is constant.
