@@ -1,25 +1,24 @@
 import React, { Component } from 'react';
 import { Gmaps, Marker, InfoWindow, Circle } from 'react-gmaps';
-//import { bindActionCreators } from 'redux';
-//import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import './NearYouMap.css';
 
-const coords = {
-  lat: 49.2827,
-  lng: -123.1207,
-}
+import clickedMap from '../../../actionCreators/clickedMap/clickedMap.js';
 
 const params = {
   v: '3.exp',
   key: 'AIzaSyDJCdjeV5EymdowQdz-C2e-FCKzfu0okpI'
 }
 
+const geocoder = null;
+
 class NearYouMap extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      lat: coords.lat,
-      lng: coords.lng,
+      lat: this.props.coords.lat,
+      lng: this.props.coords.long,
     }
   }
   onMapCreated(map) {
@@ -27,14 +26,25 @@ class NearYouMap extends Component {
       disableDefaultUI: false,
       draggableCursor: "default",
     });
+    console.log("map", map);
   }
   handleClick(e) {
     const latitude = e.latLng.lat();
     const longitude = e.latLng.lng();
-    console.log(`Click at latitude = ${latitude} and longitude = ${longitude}`);
+    console.log("e = ", e);
+    console.log("func", e.Geocoder);
+    /*
+    window.google.maps.Geocoder().geocode(e.latLng, function(results, status) {
+      console.log(results, status);
+    });
+    */
     this.setState({
       lat: latitude,
       lng: longitude,
+    });
+    this.props.clickedMap({
+      lat: latitude,
+      long: longitude,
     });
   }
   render() {
@@ -42,8 +52,8 @@ class NearYouMap extends Component {
       <div className="row">
         <div className="col-md-12">
           <Gmaps className="nearYouMap"
-            lat={coords.lat}
-            lng={coords.lng}
+            lat={this.props.coords.lat}
+            lng={this.props.coords.long}
             zoom={12}
             loadingMessage={'Be happy'}
             params={params}
@@ -62,22 +72,19 @@ class NearYouMap extends Component {
   }
 }
 
-/*
+
 const mapStateToProps = (state) => {
   return {
-    query: state.search.query,
-    lastQuery: state.search.lastQuery,
-    data: state.data
+    coords: state.data.location.coords
   }
 }
 
+
 const matchDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    appStarted: appStarted
+    clickedMap: clickedMap
   }, dispatch);
 }
-*/
 
-//export default connect(mapStateToProps, matchDispatchToProps)(Map);
 
-export default NearYouMap;
+export default connect(mapStateToProps, matchDispatchToProps)(NearYouMap);

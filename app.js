@@ -13,6 +13,8 @@ var fetchWorldwide = require('./routes/fetchWorldwide');
 var fetchMostLiked = require('./routes/fetchMostLiked');
 var search = require('./routes/search');
 var like = require('./routes/like');
+var fetchNewLocationData = require('./routes/fetchNewLocationData');
+var fetchLocation = require('./routes/fetchLocation');
 
 
 var app = express();
@@ -60,6 +62,8 @@ app.use('/fetchPopular', fetchPopular);
 app.use('/fetchWorldwide', fetchWorldwide);
 app.use('/fetchMostLiked', fetchMostLiked);
 app.use('/like', like);
+app.use('/fetchNewLocationData', fetchNewLocationData);
+app.use('/fetchLocation', fetchLocation);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -6,7 +6,7 @@ class About extends Component {
     render() {
         return (
             <div className="row">
-                <div className="col-md-12 background About">
+                <div className="col-md-12 background about">
                     <div className="page-header">
                         <h4>
                             About

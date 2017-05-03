@@ -18,13 +18,19 @@ class Dropdown extends Component {
                 } id="basic-nav-dropdown">
                     {
                         [
-                            {title: "Near You", icon: "map-marker"},
-                            {title: "Worldwide", icon: "globe"},
-                            {title: "Popular Searches", icon: "fire"},
-                            {title: "Most Liked", icon: "thumbs-up"},
-                            {title: "About", icon: "asterisk"}
+                            { title: "Near You", icon: "map-marker", class: "nearYou" },
+                            { title: "Worldwide", icon: "globe", class: "worldwide" },
+                            { title: "Popular Searches", icon: "fire", class: "popular" },
+                            { title: "Most Liked", icon: "thumbs-up", class: "mostLiked" },
+                            { title: "About", icon: "asterisk", class: "about" }
                         ].map((item, index) => {
-                            return <DropdownItem title={item.title} icon={item.icon} index={index} key={index} />;
+                            return <DropdownItem
+                                title={item.title}
+                                icon={item.icon}
+                                class={item.class}
+                                index={index}
+                                key={index}
+                            />;
                         })
                     }
                 </NavDropdown>

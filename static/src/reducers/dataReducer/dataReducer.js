@@ -1,7 +1,7 @@
 const initialDataState = {
     location: {
-        city: "",
-        country: "",
+        address: "",
+        coords: {},
     },
     userSearch: [],
     nearYou: [
@@ -102,13 +102,14 @@ const dataReducer = (state = initialDataState, action) => {
         case "RECEIVED_ONE_STARTUP_DATA":
             state = {
                 ...state,
-                progress: state.progress + 25
+                progress: state.progress + 20
             }
             break;
         case "RECEIVED_ALL_STARTUP_DATA":
             console.log("got the startup data!", action);
             state = {
                 ...state,
+                location: action.payload.data.location,
                 nearYou: action.payload.data.nearYou,
                 worldwide: action.payload.data.worldwide,
                 popular: action.payload.data.popular,
@@ -161,6 +162,19 @@ const dataReducer = (state = initialDataState, action) => {
             state = Object.assign({}, state, action.payload.data, {
                 loadingLikeData: false,
             });
+            break;
+        case "NEW_LOCATION_DATA_ERROR":
+            console.log(action);
+            break;
+        case "RECEIVED_NEW_LOCATION_DATA":
+            console.log("new location data", action);
+            state = {
+                ...state,
+                nearYou: action.payload.data.nearYou,
+                location: Object.assign({}, state.location, {
+                    address: action.payload.data.address
+                })
+            }
             break;
         default:
             break;

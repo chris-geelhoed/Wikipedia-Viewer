@@ -27,7 +27,7 @@ class App extends Component {
             wikiData={this.props.data.userSearch} />
           <Slideshow 
           class="nearYou"
-          title="Trending Near You"
+          title={`Trending Near ${this.props.data.location.address}`}
           wikiData={this.props.data.nearYou}
           map={<NearYouMap />}
           />
