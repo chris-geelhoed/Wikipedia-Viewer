@@ -26,16 +26,18 @@ class NearYouMap extends Component {
     });
   }
   handleClick(e) {
-    const latitude = e.latLng.lat();
-    const longitude = e.latLng.lng();
-    this.setState({
-      lat: latitude,
-      lng: longitude,
-    });
-    this.props.clickedMap({
-      lat: latitude,
-      long: longitude,
-    });
+    if (!this.props.loadingNewLocation) {
+      const latitude = e.latLng.lat();
+      const longitude = e.latLng.lng();
+      this.setState({
+        lat: latitude,
+        lng: longitude,
+      });
+      this.props.clickedMap({
+        lat: latitude,
+        long: longitude,
+      });
+    }
   }
   render() {
     return (
@@ -64,7 +66,8 @@ class NearYouMap extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    coords: state.data.location.coords
+    coords: state.data.location.coords,
+    loadingNewLocation: state.data.loadingNewLocation,
   }
 }
 
