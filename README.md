@@ -1,7 +1,5 @@
 # Wikipedia-Viewer
 
-http://www.knowwhatsup.net
-
 The purpose of this webpage is to help people learn more about the issues being discussed in their local and global community without reliance on any specific news provider. This is done by monitoring social media for trending topics and then finding popular Wikipedia articles relating to those discussions.
 
 ## Technical Details
